@@ -34,6 +34,14 @@ body {
     padding-right: 50px;
 }
 
+.texts {
+    color: rgb(80, 77, 77);
+}
+
+#note-button {
+    margin-top: 10pt;
+}
+
 
 /* textarea, input {
     display: block;
