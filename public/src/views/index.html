@@ -3,20 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Averia+Libre|Charmonman|Mogra|Satisfy" rel="stylesheet">
     <title>Articles</title>
     <link rel="stylesheet" type="text/css" href="./src/css/style.css">
 </head>
 
 <body>
     <div id="wrapper">
-        <h1>Em's Homework</h1>
-        <h2><i> Mongoose Article Scraping</i></h2>
-        <h4>Not easy damn it!</h4>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Em's Scraper Homework</h1>
+                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2><i> Articles from EchoJS</i></h2>
         <div id="articles"></div>
         <div id="notes"></div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./src/js/app.js"></script>
+
 </body>
 
 </html>
