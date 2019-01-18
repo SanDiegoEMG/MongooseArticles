@@ -12,15 +12,27 @@ body {
 #articles {
     display: inline-block;
     overflow: auto;
-    width: 60%;
+    /* width: 60%; */
     height: 700px;
+    margin-left: 5%;
 }
 
 #notes {
-    float: right;
-    width: 30%;
+    /* float: right; */
+    /* width: 30%;
+    margin-right: 5%; */
 }
 
+.card {
+    height: 300px;
+    background-color: rgb(131, 175, 218);
+}
+
+.jumbotron{
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
 
 
 /* textarea, input {
