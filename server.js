@@ -26,7 +26,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/mongoArticles", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/mongoArticles", { useNewUrlParser: true });
+
+// connecting using mLabs mongodb
+mongoose.connect("mongodb://heroku_p03q4g48:n3imeinar0egosggpubos7fspa@ds261114.mlab.com:61114/heroku_p03q4g48", {useNewURLParser: true});
 
 
 // html file rendered on home route
