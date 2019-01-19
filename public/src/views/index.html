@@ -26,11 +26,18 @@
         <div class="row">
             <div class="col-lg-7">
                 <h3> Articles from EchoJS</h3>
-                <div id="articles"></div>
+
+                <div class="row">
+                    <div> <button class="btn btn-secondary btn-sm space" id="scrape-articles">Scrape Articles</button></div>
+                    <div> <button class="btn btn-success btn-sm space" id="show-articles">Show Articles</button></div>
+                    <div id="articles"></div>
+                </div>
             </div>
+
             <div class="col-lg-1"></div>
 
-            <div class="col-lg-4 card" id="notes"><h3 class="text-center texts">Notes</h3>
+            <div class="col-lg-4 card" id="notes">
+                <h3 class="text-center texts">Notes</h3>
                 <div class="card-body form-group">
                     <label for="noteBody"></label>
                     <textarea class="form-control" id="noteBody" rows="5" placeholder="type your notes here"></textarea>

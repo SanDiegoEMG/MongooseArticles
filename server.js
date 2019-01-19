@@ -5,24 +5,25 @@ var mongoose = require("mongoose");
 var path = require("path");
 var app = express();
 
-// Scraping Tools
+// NPM tools for scraping 
 var axios = require("axios");
 var cheerio = require("cheerio");
 
 
-// Require all models
+// makes all files within models folder accessible
 var db = require("./models");
 
+// first part of this allows Heroku / mLabs to assign a port
 var PORT = process.env.PORT || 3000;
 
-// Use morgan logger for logging requests
+// Use morgan logger to show info on logs
 app.use(logger("dev"));
 
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// To serve static files such as images, CSS files, and JavaScript files, use the express.static built-in middleware function in Express.
+// To serve static files such as images, CSS files, and JavaScript files, use the express.static - a built-in middleware function in Express.
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
@@ -40,25 +41,25 @@ app.get("/", function (req, res) {
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
-    // First, we grab the body of the html with axios
+    //  grab the body of the html with axios
     axios.get("http://www.echojs.com/").then(function(response) {
-      // Then, we load that into cheerio and save it to $ for a shorthand selector
+      // load that into cheerio assign to $ (mimics jquery syntax)
       var $ = cheerio.load(response.data);
   
-      // Now, we grab every h2 within an article tag, and do the following:
+      // grab every h2 within an article tag - differs depending on website you are scraping
       $("article h2").each(function(i, element) {
         // Save an empty result object
         var result = {};
   
-        // Add the text and href of every link, and save them as properties of the result object
+        // Add text & href of every link - save  as properties of the result object
         result.title = $(this)
           .children("a")
           .text();
         result.link = $(this)
           .children("a")
           .attr("href");
-  
-        // Create a new Article using the `result` object built from scraping
+
+        // use Article model with `result` object 
         db.Article.create(result)
           .then(function(art) {
             // View the added result in the console
@@ -91,7 +92,6 @@ app.get("/articles", function(req, res) {
 
 // Route for grabbing specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {
-    // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
     db.Article.findOne({ _id: req.params.id })
       // ..and populate all of the notes associated with it
       .populate("note")

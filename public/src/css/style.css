@@ -42,6 +42,10 @@ body {
     margin-top: 10pt;
 }
 
+.space {
+    margin-left: 8pt;
+    margin-right: 8pt;
+}
 
 /* textarea, input {
     display: block;
