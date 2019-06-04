@@ -21,18 +21,23 @@ $("#scrape-articles").on("click", function () {
   })
 })
 
+
+
+
+
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function () {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
+  console.log(thisId);
 
   $.ajax({
     method: "GET",
     url: "/articles/" + thisId
   })
-    // With that done, add the note information to the page
+    // add the note info to the page
     .then(function (data) {
       console.log(data);
       // The title of the article
@@ -42,9 +47,9 @@ $(document).on("click", "p", function () {
       // A textarea to add a new note body
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button data-id='" + data._id + "' id='note-button'>Save Note</button>");
 
-      // If there's a note in the article
+      // If there's a note for the article
       if (data.note) {
         // Place the title of the note in the title input
         $("#titleinput").val(data.note.title);
@@ -67,7 +72,7 @@ $(document).on("click", "#savenote", function () {
       // Value taken from title input
       title: $("#titleinput").val(),
       // Value taken from note textarea
-      body: $("#bodyinput").val()
+      body: $("#noteBody").val()
     }
   })
     // With that done
@@ -79,6 +84,6 @@ $(document).on("click", "#savenote", function () {
     });
 
   // Also, remove the values entered in the input and textarea for note entry
-  $("#titleinput").val("");
-  $("#bodyinput").val("");
+  $("#title-input").val("");
+  $("#body-input").val("");
 });
